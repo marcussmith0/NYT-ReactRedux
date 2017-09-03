@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 
+import { fetchArticles } from '../actions/index';
+
 class Search extends Component {
 
     renderField(field) {
@@ -22,8 +24,9 @@ class Search extends Component {
         )
     }
 
-    onSumbit (values) {
+    onSubmit (values) {
         this.props.fetchArticles(values);
+        
     }
 
     render() {
@@ -32,7 +35,7 @@ class Search extends Component {
                 <div className="panel panel-header">Search</div>
 
                 <div className="panel panel-body">
-                    <form onSumbit={handleSubmit(this.onSumbit.bind(this))}>
+                    <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                         <Field
                             label="Topic"
                             name='topic'
@@ -83,5 +86,5 @@ export default reduxForm({
     validate: validate,
     form: "searchForm"
 })(
-    connect(null, {fetchArticles})(Search)
+    connect(null, { fetchArticles })(Search)
 );
