@@ -30,6 +30,8 @@ class Search extends Component {
     }
 
     render() {
+        const { handleSubmit } = this.props;
+    
         return (
             <div className="panel panel-default text-center">
                 <div className="panel panel-header">Search</div>
