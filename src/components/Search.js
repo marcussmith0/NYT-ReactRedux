@@ -1,8 +1,30 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
 
 class Search extends Component {
 
+    renderField(field) {
+        const { meta: { touched, error }} = field
+        const className = `form-group ${touched && error ? 'has-danger':''}`
+
+        return (
+            <div className={className}>
+                <input
+                    className="form-control"
+                    type='text'
+                    {...field.input}
+                />
+                <div className="text-help">
+                    {touched ? error: ""}
+                </div>
+            </div>
+        )
+    }
+
+    onSumbit (values) {
+        this.props.fetchArticles(values);
+    }
 
     render() {
         return (
@@ -10,7 +32,7 @@ class Search extends Component {
                 <div className="panel panel-header">Search</div>
 
                 <div className="panel panel-body">
-                    <form className="form-group">
+                    <form onSumbit={handleSubmit(this.onSumbit.bind(this))}>
                         <Field
                             label="Topic"
                             name='topic'
@@ -28,6 +50,8 @@ class Search extends Component {
                             name='endYear'
                             component={this.renderField}
                         />
+
+                        <button className="btn btn-primary">Search</button>
                     </form>
                 </div>
             </div>
@@ -35,4 +59,29 @@ class Search extends Component {
     }
 }
 
-export default Search;
+
+function validate(values) {
+    const errors = {};
+
+    if(!values.topic) {
+        errors.topic = "Please enter topic";
+    }
+
+    if(!values.startYear) {
+        errors.startYear = "Please enter start year";
+    }
+
+    if(!values.endYear) {
+        errors.endYear = "Please enter end year";
+    }
+
+    return errors;
+}
+
+
+export default reduxForm({
+    validate: validate,
+    form: "searchForm"
+})(
+    connect(null, {fetchArticles})(Search)
+);
