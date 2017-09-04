@@ -1,6 +1,7 @@
 import  { find }  from '../utils/utils';
 
 export const FETCH_ARTICLES = 'FETCH_ARTICLES';
+export const SAVE_ARTICLE = 'SAVE_ARTICLE';
 
 
 export function fetchArticles(values) {
@@ -12,4 +13,14 @@ export function fetchArticles(values) {
         type: FETCH_ARTICLES,
         payload: request
     }
+}
+
+export function saveArticle(article) {
+
+
+    return {
+        type: SAVE_ARTICLE,
+        payload: article._id
+    }
+
 }
