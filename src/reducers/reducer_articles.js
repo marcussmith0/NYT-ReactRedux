@@ -1,11 +1,12 @@
 import { FETCH_ARTICLES } from '../actions/index';
 
-export default function (state = {}, action) {
+export default function(state = {}, action) {
 
-    switch(action.TYPE) {
+    switch(action.type) {
 
         case FETCH_ARTICLES:
-            return _.mapKeys(action.payload.data, 'id');
+            
+            return _.mapKeys(action.payload, 'id');
 
 
         default:
