@@ -10,7 +10,9 @@ module.exports = function(app) {
             date: req.body.pub_date
         });
 
-        newArticle.save().then((result) => {
+        newArticle.save().then((err, result) => {
+            if (err) res.send(err);
+            
             console.log("a new article was saved");
             res.send(result);
         }).catch((err) => {
