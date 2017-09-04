@@ -1,8 +1,9 @@
-import  { find, save, findSaved }  from '../utils/utils';
+import  { find, save, findSaved, deleteDestroy }  from '../utils/utils';
 
 export const FETCH_ARTICLES = 'FETCH_ARTICLES';
 export const FETCH_SAVED = 'FETCH_SAVED';
 export const SAVE_ARTICLE = 'SAVE_ARTICLE';
+export const DELETE_SAVED = 'DELETE_SAVED';
 
 
 export function fetchArticles(values) {
@@ -35,5 +36,15 @@ export function fetchSaved() {
         type: FETCH_SAVED,
         payload: request
     }
+}
 
+export function deleteSaved(id) {
+    console.log(id);
+
+    deleteDestroy(id);
+
+    return {
+        type: DELETE_SAVED,
+        payload: id
+    }
 }

@@ -3,15 +3,18 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
-import { fetchSaved } from '../actions/index';
+import { fetchSaved, deleteSaved } from '../actions/index';
 
 class Saved extends Component {
     componentDidMount() {
         this.props.fetchSaved();
     }
 
+    deleteArticle(id) {
+        this.props.deleteSaved(id);
+    }
+
     renderSaved() {
-        console.log("this is the articles", this.props.saved);
         return _.map(this.props.saved, (article) => {
             return (
                 <li className="list-group-item" key={article._id}>
@@ -19,7 +22,7 @@ class Saved extends Component {
                         <p>{article.title}</p>
                     </a>
                         
-                    <button className="btn btn-danger">
+                    <button onClick={(id) => this.deleteArticle(article._id)} className="btn btn-danger">
                         Delete
                     </button>
                 </li>
@@ -49,4 +52,4 @@ function mapStateToProps(state) {
     return { saved: state.saved }
 }
 
-export default connect(mapStateToProps, { fetchSaved })(Saved);
+export default connect(mapStateToProps, { fetchSaved, deleteSaved })(Saved);

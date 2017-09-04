@@ -28,4 +28,16 @@ module.exports = function(app) {
             res.send(articles);
         });
     });
+
+    app.delete("/api/delete/:id", (req, res) => {
+        let id = req.params.id
+
+        console.log("this is the id", id);
+
+        Article.findByIdAndRemove(id, (err, result) => {
+            if (err) return res.send(err);
+
+            res.send(result);
+        });
+    });
 }

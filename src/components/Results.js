@@ -7,7 +7,6 @@ class Results extends Component {
 
     onSave(id) {
         const { articles } = this.props;
-        console.log(articles[id]); 
         this.props.saveArticle(articles[id]);
     }
 

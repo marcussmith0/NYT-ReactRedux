@@ -27,3 +27,10 @@ export function findSaved() {
         return articles.data;
     });
 }
+
+export function deleteDestroy(id) {
+    console.log(id);
+    
+    return axios.delete(`/api/delete/${id}`);    
+    
+}
