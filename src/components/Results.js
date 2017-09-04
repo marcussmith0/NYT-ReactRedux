@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { saveArticle } from '../utils/utils';
+
 class Results extends Component {
+
+    onSave(id) {
+        const { articles } = this.props;
+        this.props.saveArticle(articles[id])
+
+    }
 
     renderList() {
         return _.map(this.props.articles, (article) => {
@@ -11,7 +19,9 @@ class Results extends Component {
                         <p>{article.abstract}</p>
                     </a>
                     
-                    <button className="btn btn-success">Save</button>
+                    <button onClick={(id) => this.onSave(article._id)} className="btn btn-success">
+                        Save
+                    </button>
             
                 </li>
             )
@@ -38,4 +48,4 @@ function mapStateToProps(state) {
     return { articles: state.articles }
 }
 
-export default connect(mapStateToProps)(Results);
+export default connect(mapStateToProps, { saveArticle })(Results);
