@@ -8,7 +8,6 @@ class Results extends Component {
     onSave(id) {
         const { articles } = this.props;
         this.props.saveArticle(articles[id])
-
     }
 
     renderList() {
