@@ -20,6 +20,7 @@ export function find(topic, start, end) {
 
 export function save(article){
 
-    return axios.post("/api/save", article);
+    console.log("this is article in utils", article);
 
+    return axios.post("/api/save", article);    
 }

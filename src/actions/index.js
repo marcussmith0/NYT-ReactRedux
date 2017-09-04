@@ -17,6 +17,9 @@ export function fetchArticles(values) {
 
 export function saveArticle(article) {
 
+    console.log("this is articles in index", article);
+
+
     save(article);
 
     return {

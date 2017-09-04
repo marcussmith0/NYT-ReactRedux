@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { saveArticle } from '../utils/utils';
+import { saveArticle } from '../actions/index';
 
 class Results extends Component {
 
     onSave(id) {
         const { articles } = this.props;
-        this.props.saveArticle(articles[id])
+        console.log(articles[id]); 
+        this.props.saveArticle(articles[id]);
     }
 
     renderList() {
@@ -21,7 +22,6 @@ class Results extends Component {
                     <button onClick={(id) => this.onSave(article._id)} className="btn btn-success">
                         Save
                     </button>
-            
                 </li>
             )
         })
@@ -33,7 +33,6 @@ class Results extends Component {
                 <div className="panel panel-header text-center">Results</div>
 
                 <div className="panel panel-body">
-                    {console.log(this.props.articles)}
                     <ul className='list-group'>
                         {this.renderList()}
                     </ul>
