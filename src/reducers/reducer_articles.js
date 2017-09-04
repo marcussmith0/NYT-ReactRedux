@@ -1,6 +1,6 @@
 import _ from "lodash";
 
-import { FETCH_ARTICLES } from '../actions/index';
+import { FETCH_ARTICLES, SAVE_ARTICLE } from '../actions/index';
 
 export default function(state = {}, action) {
 
@@ -8,6 +8,10 @@ export default function(state = {}, action) {
 
         case FETCH_ARTICLES: 
             return _.mapKeys(action.payload, '_id');
+        
+        case SAVE_ARTICLE:
+            return _.omit(state, action.payload);
+        
         default:
             return state
     }
