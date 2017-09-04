@@ -1,4 +1,4 @@
-import  { find }  from '../utils/utils';
+import  { find, save }  from '../utils/utils';
 
 export const FETCH_ARTICLES = 'FETCH_ARTICLES';
 export const SAVE_ARTICLE = 'SAVE_ARTICLE';
@@ -17,6 +17,7 @@ export function fetchArticles(values) {
 
 export function saveArticle(article) {
 
+    save(article);
 
     return {
         type: SAVE_ARTICLE,
