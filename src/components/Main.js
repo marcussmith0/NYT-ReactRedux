@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import Search from './Search';
+import Results from './Results';
 
 class Main extends Component {
   render() {
@@ -21,6 +22,10 @@ class Main extends Component {
         <div className="row">
 
           <Search />
+        </div>
+
+        <div className="row">
+          <Results />
         </div>
      </div>
      
