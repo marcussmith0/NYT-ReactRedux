@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from "react-redux";
 
 import Search from './Search';
 import Results from './Results';
 
 class Main extends Component {
+
+  renderResults() {
+    if(!this.props.articles) {
+      return <div></div>
+    } else {
+      return <Results />
+    }
+  }
+
   render() {
+
     return (
       <div className="container">
         <div className="jumbotron">
@@ -24,8 +35,8 @@ class Main extends Component {
           <Search />
         </div>
 
-        <div className="row">
-          <Results />
+        <div className='row'>
+          {this.renderResults()}
         </div>
      </div>
      
@@ -33,6 +44,10 @@ class Main extends Component {
   }
 }
 
-export default Main;
+function mapStateToProps(state) {
+  return { articles: state.articles }
+}
+
+export default connect(mapStateToProps)(Main);
 
 
