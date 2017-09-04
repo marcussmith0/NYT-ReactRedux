@@ -1,6 +1,7 @@
-import  { find, save }  from '../utils/utils';
+import  { find, save, findSaved }  from '../utils/utils';
 
 export const FETCH_ARTICLES = 'FETCH_ARTICLES';
+export const FETCH_SAVED = 'FETCH_SAVED';
 export const SAVE_ARTICLE = 'SAVE_ARTICLE';
 
 
@@ -22,6 +23,17 @@ export function saveArticle(article) {
     return {
         type: SAVE_ARTICLE,
         payload: article._id
+    }
+
+}
+
+export function fetchSaved() {
+
+    const request = findSaved();
+
+    return {
+        type: FETCH_SAVED,
+        payload: request
     }
 
 }

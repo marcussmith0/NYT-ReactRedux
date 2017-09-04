@@ -17,7 +17,15 @@ module.exports = function(app) {
             res.send(result);
         }).catch((err) => {
             res.send(err);
-        })
+        });
 
+    });
+
+    app.get('/api/saved', (req, res) => {
+        Article.find({}, (err, articles) => {
+            if (err) return res.send(err);
+
+            res.send(articles);
+        });
     });
 }

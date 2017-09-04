@@ -13,11 +13,17 @@ export function find(topic, start, end) {
                     return articles;   
                 }
         
-                return "";
+                return "";  
             });
 
 }
 
 export function save(article){
     return axios.post("/api/save", article);    
+}
+
+export function findSaved() {
+    return axios.get('/api/saved').then((articles) => {
+        return articles.data;
+    });
 }
