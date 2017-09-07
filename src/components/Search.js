@@ -13,11 +13,12 @@ class Search extends Component {
         return (
             <div className={className}>
                 <div className="col-md-8 col-md-offset-2">
-                <input
-                    className="form-control"
-                    type='text'
-                    {...field.input}
-                />
+                    <label>{field.label}</label>
+                    <input
+                        className="form-control"
+                        type='text'
+                        {...field.input}
+                    />
                 <div className="text-danger">
                     {touched ? error: ""}
                 </div>

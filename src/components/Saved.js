@@ -30,6 +30,13 @@ class Saved extends Component {
         });
     }
 
+    check() {
+        const { saved } = this.props;
+        if(Object.keys(saved).length === 0) {
+            return <h3 className="text-center">There are no saved articles</h3>
+        }
+    }
+
     render(){
         return (
             <div className="panel panel-default">
@@ -41,6 +48,7 @@ class Saved extends Component {
                 <div className="panel panel-body">
                     <ul className='list-group'>
                         {this.renderSaved()}
+                        {this.check()}
                     </ul>
                 </div>
             </div>

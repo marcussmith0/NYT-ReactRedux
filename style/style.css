@@ -1,3 +1,26 @@
 .hide {
   opacity: 0;
 }
+
+.jumbotron {
+  background-image: url("/../public/images/newyork.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.make-vis {
+  color: white;
+  font-family: 'Baloo Tammudu', cursive;
+  
+  }
+
+.bg-size {
+  font-size: 63px;
+}
+
+.panel {
+  margin-bottom: 0px;
+}

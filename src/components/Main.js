@@ -7,14 +7,21 @@ import Results from './Results';
 
 class Main extends Component {
 
+  renderResults() {
+    const { articles } = this.props
+    if(Object.keys(articles).length) {
+      return <Results/>
+    }
+  }
+
   render() {
     return (
       <div className="container">
         <div className="jumbotron">
             <div className="text-center">
-                <h1>NYT News Searcher</h1>
+                <h2 className="make-vis bg-size">NYT News Searcher</h2>
                 <hr/>
-                <h3><i>Where news searching happens</i></h3>
+                <h3 className="make-vis"><i>Where news searching happens</i></h3>
             </div>
             <Link to="/saved"><span className="float-right btn btn-success">View Saved</span></Link>
 
@@ -27,7 +34,7 @@ class Main extends Component {
 
         <div className='row'>
           <div className="col-md-6 col-md-offset-3">
-            <Results/>
+            {this.renderResults()}
           </div>
         </div>
      </div>
