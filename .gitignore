@@ -2,7 +2,6 @@
 bundle.js
 npm-debug.log
 .DS_Store
-/src/config/api-key.js
 
 # IntelliJ
 *.iml
