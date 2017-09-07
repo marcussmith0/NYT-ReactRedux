@@ -8,17 +8,19 @@ class Search extends Component {
 
     renderField(field) {
         const { meta: { touched, error }} = field
-        const className = `form-group ${touched && error ? 'has-danger':''}`
+        const className = `form-group ${touched && error ? 'has-error':''}`
 
         return (
             <div className={className}>
+                <div className="col-md-8 col-md-offset-2">
                 <input
                     className="form-control"
                     type='text'
                     {...field.input}
                 />
-                <div className="text-help">
+                <div className="text-danger">
                     {touched ? error: ""}
+                </div>
                 </div>
             </div>
         )
@@ -34,10 +36,10 @@ class Search extends Component {
     
         return (
             <div className="panel panel-default text-center">
-                <div className="panel panel-header">Search</div>
+                <div className="panel panel-heading"><h3>Search</h3></div>
 
                 <div className="panel panel-body">
-                    <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+                    <form className="form-horizontal" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                         <Field
                             label="Topic"
                             name='topic'

@@ -7,16 +7,7 @@ import Results from './Results';
 
 class Main extends Component {
 
-  renderResults() {
-    if(!this.props.articles) {
-      return <div></div>
-    } else {
-      return <Results />
-    }
-  }
-
   render() {
-
     return (
       <div className="container">
         <div className="jumbotron">
@@ -25,21 +16,21 @@ class Main extends Component {
                 <hr/>
                 <h3><i>Where news searching happens</i></h3>
             </div>
-            <Link to="/search"><span className="float-right btn btn-primary">Search</span></Link>
-            &nbsp;
-            <Link to="/saved"><span className="float-right btn btn-success">Saved</span></Link>
+            <Link to="/saved"><span className="float-right btn btn-success">View Saved</span></Link>
 
         </div>
         <div className="row">
-
-          <Search />
+          <div className="col-md-6 col-md-offset-3">
+            <Search />
+          </div>
         </div>
 
         <div className='row'>
-          {this.renderResults()}
+          <div className="col-md-6 col-md-offset-3">
+            <Results/>
+          </div>
         </div>
      </div>
-     
     );
   }
 }

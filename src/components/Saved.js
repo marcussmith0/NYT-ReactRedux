@@ -33,9 +33,9 @@ class Saved extends Component {
     render(){
         return (
             <div className="panel panel-default">
-                <div className="panel panel-header text-center">
-                    <Link to='/' className="btn btn-primary">Home</Link> &nbsp;
-                    Saved
+                <div className="panel panel-heading text-center">
+                    <Link to='/' className="btn btn-primary pull-left">Home</Link> &nbsp;
+                    <h3>Saved</h3>
                 </div>
 
                 <div className="panel panel-body">

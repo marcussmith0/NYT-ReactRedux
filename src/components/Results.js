@@ -29,7 +29,7 @@ class Results extends Component {
     render() {
         return (
             <div className="panel panel-default">
-                <div className="panel panel-header text-center">Results</div>
+                <div className="panel panel-heading text-center"><h3>Results</h3></div>
 
                 <div className="panel panel-body">
                     <ul className='list-group'>

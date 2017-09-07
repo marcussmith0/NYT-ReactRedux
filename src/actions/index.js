@@ -5,7 +5,7 @@ export const FETCH_SAVED = 'FETCH_SAVED';
 export const SAVE_ARTICLE = 'SAVE_ARTICLE';
 export const DELETE_SAVED = 'DELETE_SAVED';
 
-
+//action creator function that calls help function
 export function fetchArticles(values) {
     
     const { topic, startYear, endYear } = values;
@@ -39,7 +39,6 @@ export function fetchSaved() {
 }
 
 export function deleteSaved(id) {
-    console.log(id);
 
     deleteDestroy(id);
 
