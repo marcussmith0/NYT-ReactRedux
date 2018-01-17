@@ -10,23 +10,24 @@ module.exports = function(app) {
             date: req.body.pub_date
         });
 
-        newArticle.save().then((err, result) => {
-            if (err) res.send(err);
+        newArticle.save().then(result => {
+            if (!result) res.status(400).send();
             
             console.log("a new article was saved");
             res.send(result);
-        }).catch((err) => {
-            res.send(err);
-        });
+            
+        }).catch(err => res.send(err));
 
     });
 
     app.get('/api/saved', (req, res) => {
-        Article.find({}, (err, articles) => {
-            if (err) return res.send(err);
+        
+        Article.find({}).then(articles => {
+            if (!articles) return res.status(404).send();
 
             res.send(articles);
-        });
+            
+        }).catch(err => res.send(err));
     });
 
     app.delete("/api/delete/:id", (req, res) => {
@@ -34,10 +35,11 @@ module.exports = function(app) {
 
         console.log("this is the id", id);
 
-        Article.findByIdAndRemove(id, (err, result) => {
-            if (err) return res.send(err);
+        Article.findByIdAndRemove(id).then(result => {
+            if (!result) return res.status(404).send();
 
             res.send(result);
-        });
+            
+        }).catch(err => res.send(err));
     });
 }
